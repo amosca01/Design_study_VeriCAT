@@ -1,0 +1,20 @@
+\section{Introduction}
+
+In 2017 Facebook's machine translation (MT) algorithm incorrectly translated a construction worker's post in Arabic reading ``good morning" to ``attack them" in Hebrew, leading to the worker's erroneous arrest and hours of questioning. Notably, no Arabic-speakers were asked to verify the machine translation of the  post leading up to the arrest\cite{hernFacebook2017}. While machine translation is clearly an example of AI, we often neglect to treat the output as susceptible to modeling error. As a result, overconfidence can be placed in machine translations and situations like that described above can arise. 
+
+In this paper, we advocate for treating MT output as an XAI problem. We seek to build an XAI system that can help users understand when MT output may not be trustworthy and should be re-translated by a human. However, providing an explanation for an opaque  MT model is a complicated problem, and current XAI initiatives do not provide an optimal solution.   
+
+Typical approaches for XAI can be broken into three categories: (1) use an approximate model, (2) allow users to explore various input-output pairs for the model, and (3) build a simpler ``white-box" version of a complicated model \ab{cite?}. In the case of MT each of these general approaches fail. An approximate MT model would lose significant utility (if that were not the case we would use the simpler model for translation in general). Seeing pairs of untranslated and translated text would be meaningless to a non-speaker of the untranslated text. And a ``white-box" method for MT simply does not currently exist.      
+
+We argue that this leaves a situation where the only option for providing important contextual information for MT output is via another opaque model, such as a quality estimation model that can give users a score indicating the quality of MT. This form of explanation would be particularly useful in situations such as the Facebook scenario described above, where fluency of a MT is not an appropriate proxy measure for quality. 
+
+In this paper we present VeriCAT, an XAI system that uses quality estimation as an ``explanation" for MT output. For a given passage of MT text VeriCAT shows the user sentence-level translation quality estimates. The main objective of the system is to provide users with additional information (the quality estimations) that they can use to determine if a MT is trustworthy, or if it should be verified by a human. 
+
+In the following sections we describe the design requirements that guided the building of VeriCAT and walk through the system's XAI interface. We evaluate VeriCAT through a quantitative user study and qualitative feedback from experts. Our quantitative study shows VeriCAT significantly improves users ability to identify MT text that is of low quality and should be re-translated by a human. Furthermore, our evaluation showed that differences in users' familiarity with MT tools and their self-rated expertise in AI and MT may effect how well they are able to identify untrustworthy MTs given quality estimations. Finally, we provide lessons learned from the design and evaluation of VeriCAT as well as a proposal for future work that incorporates users study results to iterate on the VeriCAT system.
+
+In summary, we contribute the following: 
+\begin{enumerate}
+    \item The VeriCAT system which leverages quality estimation to provide an element of ``explanation" to machine translation output. 
+    \item An evaluation of VeriCAT demonstrating its utility to users and that differences between users may effect their ability to perform a Human-AI collaborative task well.
+    \item Lessons learned from the design and evaluation of VeriCAT including a call for more user-centered iterative design of XAI systems. 
+\end{enumerate}
