@@ -1,1 +1,17 @@
 \section{Design Requirements}
+
+It is not uncommon for analysts to use MT text to scan text in languages they do not speak for potential threats. This is because although human translators outperform MT models, they are in high demand and expensive\cite{mauvcec2019machine}. However, when analysts do not speak the original language of the text they are asked to analyze, they become completely dependant on MT. Even if an analyst is aware that MT is not perfect, the only intuition they would have for judging quality of MT text is its fluency and adequacy. 
+
+In a lot of cases fluency and adequacy will work as proxies for translation quality. However, there is a non-negligible number of cases where this approach can completely fail. The ``attack them" incident is a clear example of this. ``Attack them" is both fluent and adequate, but is a very low quality translation. Another example is text in all caps. MT models are highly inaccurate at all caps translations, but those incorrect translations can be highly fluent and accurate. For example, in the data set we use for our study there is one MT of all caps Russian text that reads ``(BUT THIS HAPPENED)", but the ground truth human translation is ``(BUT THEY DIDN'T HEAR IT)".       
+
+We see this conundrum as an opportunity for XAI to improve MT for analysts. If analysts could be given some indication of whether or not to trust MT text, they would be able to do their jobs more effectively. In addition, translators would be less overrun with translation requests for MT text that does not necessarily need a human re-translation and could focus more on necessary re-translations.
+
+Based on the examples presented above and conversations with experts in the area, we distill the following design requirements for applying XAI to MT: 
+
+\begin{compacthang}
+\item \textbf{R1}
+\item \textbf{R2}
+\item \textbf{R3} 
+\end{compacthang}
+
+VeriCAT is designed to meet these requirements. To be clear, there are many potential avenues for meeting the requirements listed above. However, for the sake of demonstrating that XAI can be applied to MT to increase its utility we chose to start by focusing on one type of explanation with the intent to further iterate on the design of VeriCAT given fidnings from our user study.    

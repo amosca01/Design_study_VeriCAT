@@ -1,3 +1,22 @@
 \section{VeriCAT System Overview}
+The purpose of VeriCAT project is to quantify trust in machine translation in order to empower end users to use translations more effectively. There are three components to the tool: a  translation quality estimation model, a training dataset, and a user interface.
+
+\subsection{The VeriCAT Quality Estimation Model}
+
+Sentence-level Quality Score
+Russian → English via FairSeq
+https://github.com/Lab41/VeriCAT
+
+\subsection{The VeriCAT training dataset}
+The VeriCAT model is trained on a dataset composed of 10,300 sentences. The source of this text is passages from Reddit, supplemenbted by Russian Proverbs from wikiquotes. The training dataset was curated from these sources because they represent types of text on which machine translation models tend to perform less well. Each sentence has 3 Direct Assessment scores, which reflect quality judgments by human translators. Each Direct Assessment (DA) score is rated on a scale from 1-100; across the dataset the average score is 68. Prior to training, the data was labeled by XXXXXX. And the labeled dataset, was contributed World Machine Translation Workshop (Nov 2020) as part of the Quality Estimation Shared Task and released at statmt.org/wmt20 
+
+\subsection{The VeriCAT User Interface}
+In the VeriCAT interface, a passage of translated text is broken down into sentences. For each sentence, users see the original (Russian) text, the machine-translated (English) version, and VeriCAT’s predicted quality score for that sentence. These sentence-level quality scores help users assess the translation quality for each sentence, to determine if it needs further inspection by a human. Whereas an accuracy metric such as a Pearson score provides information about the accuracy of a machine translation model in general, for example, FairSeq has a Pearson score of XXXX, VeriCAT’s sentence-level quality scores help users assess the quality of a specific translated sentence. Quality scores are represented by a horizontal bar, where the percentage of the bar that is colored represents the score on a scale from 1 to 100. For clarity, the numerical value of the quality score is also displayed. 
+
+When viewing the training dataset, users also have the option to switch to “God-mode” which allows them to see the hand-corrected version of each translated sentence — a “ground truth” for this dataset. In this mode, the interface also shows world-level errors in the translated text. Incorrect words are displayed in red, missing words are indicated with an underscore, and deletions are shown in red text with a strikethrough. Types of errors per sentence are aggregated and summarized below the Quality Score for each sentence. 
+
+https://github.com/Lab41/VeriCAT-UI
+
+  
 
 
