@@ -1,18 +1,18 @@
 \section{VeriCAT System Overview}
-The purpose of VeriCAT is to quantify trust in machine translation in order to empower end users to use translations more effectively. There are three components to the tool: a  translation quality estimation model, a training dataset, and a user interface.
+The purpose of VeriCAT is to quantify trustworthiness of a MT in order to empower analysts to use translations more effectively. There are three components to the tool: a  translation QE model, a training dataset, and a user interface which we describe in detail below.
 
-\subsection{The VeriCAT Quality Estimation Model}
+\subsection{Quality Estimation Model}
 
 Sentence-level Quality Score
 Russian → English via FairSeq
 
 https://github.com/Lab41/VeriCAT
 
-\subsection{The VeriCAT training dataset}
-The VeriCAT model is trained on a dataset composed of 10,300 sentences. The source of this text is passages from Reddit, supplemented by Russian Proverbs from wikiquotes. The training dataset was curated from these sources because they represent types of text on which machine translation models tend to perform less well. Each sentence has 3 Direct Assessment scores, which reflect quality judgments by human translators. Each Direct Assessment (DA) score is rated on a scale from 1-100; across the dataset the average score is 68. Prior to training, the data was labeled by XXXXXX. And the labeled dataset, was contributed World Machine Translation Workshop (Nov 2020) as part of the Quality Estimation Shared Task and released at statmt.org/wmt20 
+\subsection{Training Dataset}
+The VeriCAT QE model is trained on a dataset composed of 10,300 sentences. The source of this text is passages from Reddit, supplemented by Russian Proverbs from wikiquotes. The training dataset was curated from these sources because they represent types of text on which machine translation models tend to perform less well. Each sentence has 3 Direct Assessment (DA) scores, which reflect quality judgments by human translators. Each DA score is rated on a scale from 1-100; across the dataset the average score is 68. Prior to training, the data was labeled by XXXXXX. And the labeled dataset, was contributed World Machine Translation Workshop (Nov 2020) as part of the Quality Estimation Shared Task and released at statmt.org/wmt20.  
 
-\subsection{The VeriCAT User Interface}
-In the VeriCAT interface, a passage of translated text is broken down into sentences. For each sentence, users see the original (Russian) text, the machine-translated (English) version, and VeriCAT’s predicted quality score for that sentence (Figure \ref{fig:p3_predicted_quality}). These sentence-level quality scores are indented to help users assess the translation quality for each sentence, to determine if it needs further inspection by a human. Whereas an accuracy metric such as a Pearson score provides information about the accuracy of a machine translation model in general, for example, FairSeq has a Pearson score of XXXX, VeriCAT’s sentence-level quality scores help users assess the quality of a specific translated sentence. Quality scores are represented by a horizontal bar, where the percentage of the bar that is colored represents the score on a scale from 1 to 100. For clarity, the numerical value of the quality score is also displayed. 
+\subsection{User Interface}
+In the VeriCAT user interface, a passage of text translated from Russian -> English via the FairSeq model is broken down into sentences (\textbf{DR1}). For each sentence, users see the original (Russian) text, the machine-translated (English) version, and VeriCAT’s predicted quality score for that sentence (Figure \ref{fig:p3_predicted_quality}). These sentence-level quality scores are indented to help users quickly assess the translation quality for each sentence, to determine if it needs further inspection by a human (\textbf{DR2}). Whereas an accuracy metric such as a Pearson score provides information about the accuracy of a MT model in general, for example, FairSeq has a Pearson score of XXXX, VeriCAT’s sentence-level quality scores help users assess the quality of a specific translated sentence. Quality scores are represented simply with a horizontal bar, where the percentage of the bar that is colored represents the score on a scale from 1 to 100 (\textbf{DR3}, \textbf{DR4}). For clarity, the numerical value of the quality score is also displayed.  
 
 %\ab{I think we might want to move this next paragraph to future work instead of here. I'm just thinking since we don't test this version or provide a use case for it it might feel a little out of flow for new readers. Alternatively I think we could talk about this version first and say we came to the version we test through iterative design.}
 
