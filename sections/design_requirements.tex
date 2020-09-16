@@ -1,19 +1,32 @@
+
+\ab{Remco doesn't think this is compelling enough without more details and quotes from SMEs. I think a potential option would be to model our paper based off this one Remco mentioned: The Chinese Room: Visualization and Interaction to
+Understand and Correct Ambiguous Machine Translation--my impression from reading it is that they kind of just came up with a solution to an MT problem without really consulting anyone. Alternatively, I think we can keep this section as is and see what the reviewers say} 
 \section{Design Requirements}
 \label{sec:design_requirements}
 
-It is not uncommon for analysts to use MT text to scan text in languages they do not speak for potential threats. This is because although human translators outperform MT models, they are in high demand and expensive\cite{mauvcec2019machine}. However, when analysts do not speak the original language of the text they are asked to analyze, they become completely dependant on MT. Even if an analyst is aware that MT is not perfect, the only intuition they would have for judging quality of MT text is its fluency and adequacy. 
+It is not uncommon for analysts to use MT text to scan text in languages they do not speak for potential threats. This is because although human translators outperform MT models, they are in high demand and expensive~\cite{mauvcec2019machine}. However, when analysts do not speak the original language of the text they are asked to analyze, they become %completely \remco{strong word -- hard to defend} 
+dependant on MT. Even if an analyst is aware that MT is not perfect, the only intuition they would have for judging quality of MT text is its fluency. Fluency refers to how well the text follows the target language's norms and takes into account things such as grammar and clarity~\cite{mauvcec2019machine}. 
 
-In a lot of cases fluency and adequacy will work as proxies for translation quality. However, there is a non-negligible number of cases where this approach can completely fail. The ``attack them" incident is a clear example of this. ``Attack them" is both fluent and adequate, but is a very low quality translation. Another example is text in all caps. MT models are highly inaccurate at all caps translations, but those incorrect translations can be highly fluent and accurate. For example, the Russian -> English FairSeq model we use for VeriCAT translates all caps Russian text that reads ``(BUT THEY DIDN'T HEAR IT)" to ``(BUT THIS HAPPENED)".        
+%\remco{how is that done?}. 
+
+In a lot of cases fluency will work as a proxy for translation quality. However, this method can be time consuming and there are number of cases where this approach can completely fail. The ``attack them" incident is a clear example of this. ``Attack them" is fluent, but is a very low quality translation. Another example is text in all caps. Often, MT models are inaccurate at all caps translations, %\remco{this claim is hard to defend}, 
+but those incorrect translations can be highly fluent. For example, the Russian $\rightarrow$ English FairSeq model we use in this work translates all caps Russian text that reads ``(BUT THEY DIDN'T HEAR IT)" to ``(BUT THIS HAPPENED)".        
 
 We see this conundrum as an opportunity for XAI to improve MT for analysts. If analysts could be given some indication of whether or not to trust MT text, they would be able to do their jobs more effectively. In addition, translators would be less overrun with translation requests for MT text that does not necessarily need a human re-translation and could focus more on necessary re-translations.
 
-Based on the examples presented above and conversations with experts and intelligence analysts, we distill the following design requirements for applying XAI to MT: 
+Based on the examples presented above and conversations with experts and intelligence analysts, we distill the following design requirements for applying XAI to MT: \remco{would be stronger if you could be specific about these conversations. For example, how many intelligence analysts were in these conversations, where did you find these analysts, how many conversations, background of the current workflow of the analysts, etc.} 
 
 \begin{compacthang}
-\item \textbf{DR1} The tool should support Russian text translated into English. 
-\item \textbf{DR2} The explanations should help users asses the quality of the translated text and quickly determine when a translation should to be verified by a human translator.
-\item \textbf{DR3} The explanations should be accessible to domain experts without expertise in AI or MT.
-\item \textbf{DR4} The tool should require little-to-no training to use.
+\item \textbf{DR1:} The tool should support Russian text translated into English \remco{each of these should be elaborated} \remco{Note that for this particular DR, if you had mentioned the current tools used by the analysts, this DR might not be relevant because this is a given?}. 
+
+\item \textbf{DR2:} The explanations should help users asses the quality of the translated text and quickly determine when a translation should to be verified by a human translator. \remco{elaborate. Be specific. Why is this a design requirement? What deficiency (in an analyst's current work) does meeting this DR address?}
+
+\item \textbf{DR3:} The explanations should be accessible to domain experts without expertise in AI or MT. \remco{same as above}
+
+\item \textbf{DR4:} The tool should require little-to-no training to use. \remco{same as above}
+
 \end{compacthang}
+
+\remco{one note about the design requirement section: this is arguably the heart of a design app paper. Once a reviewer is convinced that these DRs are critical for an important user (or group of users). Then it's smooth sailing from that point on}
 
 VeriCAT is designed to meet these requirements. To be clear, there are many potential avenues for meeting the requirements listed above. However, for the sake of demonstrating that XAI can be applied to MT to increase its utility we chose to start by focusing on one type of explanation with the intent to further iterate on the design of VeriCAT given findings from our user study.    
